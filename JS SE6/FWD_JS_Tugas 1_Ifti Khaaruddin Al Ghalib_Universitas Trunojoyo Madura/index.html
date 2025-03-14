@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1</title>
+</head>
+<body>
+
+    <h2>hitung luas</h2>
+
+    <script>
+        // Fungsi menghitung luas persegi panjang
+        function PersegiPanjang(panjang, lebar) {
+            return panjang * lebar;
+        }
+
+        // Fungsi menghitung luas bujur sangkar (persegi)
+        function BujurSangkar(sisi) {
+            return sisi * sisi;
+        }
+
+        // Fungsi menghitung luas segitiga
+        function Segitiga(alas, tinggi) {
+            return (alas * tinggi) / 2;
+        }
+
+        // Contoh penggunaan
+        let panjang = 10, lebar = 5,sisi = 6,alas = 8, tinggi = 4;
+        // Menampilkan hasil di halaman
+        document.write("<p>Luas Persegi Panjang </p><p>(10 * 5): " + PersegiPanjang(panjang, lebar) + "</p>");
+        document.write("<p>Luas Bujur Sangkar </p><p>(6 * 6): " + BujurSangkar(sisi) + "</p>");
+        document.write("<p>Luas Segitiga </p><p>(8 * 4 / 2): " + Segitiga(alas, tinggi) + "</p>");
+    </script>
+
+</body>
+</html>
