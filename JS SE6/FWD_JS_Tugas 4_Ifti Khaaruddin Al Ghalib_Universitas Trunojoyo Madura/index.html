@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Transportasi</title>
+</head>
+<body>
+
+    <h2>Daftar Pelanggan yang Menyewa Kendaraan</h2>
+    <ul id="daftarPelanggan"></ul>
+
+    <script>
+        // Class Pelanggan untuk menyimpan data pelanggan
+        class Pelanggan {
+            constructor(nama, nomorTelepon, kendaraanDisewa) {
+                this.nama = nama;
+                this.nomorTelepon = nomorTelepon;
+                this.kendaraanDisewa = kendaraanDisewa;
+            }
+        }
+
+       
+        let daftarPelanggan = [];
+
+        
+        
+        function sewaKendaraan(nama, nomorTelepon, kendaraan) {
+            const pelangganBaru = new Pelanggan(nama, nomorTelepon, kendaraan);
+            daftarPelanggan.push(pelangganBaru);
+            tampilkanPelanggan();
+        }
+
+        
+        function tampilkanPelanggan() {
+            let daftarElement = document.getElementById("daftarPelanggan");
+            daftarElement.innerHTML = ""; 
+            
+            daftarPelanggan.forEach((pelanggan, index) => {
+                let item = document.createElement("li");
+                item.textContent = `${index + 1}. ${pelanggan.nama} (${pelanggan.nomorTelepon}) - ${pelanggan.kendaraanDisewa}`;
+                daftarElement.appendChild(item);
+            });
+        }
+
+        sewaKendaraan("nebu", "08123456789", "Mobil");
+        sewaKendaraan("sig", "08198765432", "Motor");
+        sewaKendaraan("aldo", "08111111111", "sepedah");
+    </script>
+
+</body>
+</html>
