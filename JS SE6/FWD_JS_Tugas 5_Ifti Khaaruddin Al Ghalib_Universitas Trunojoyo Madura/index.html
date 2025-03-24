@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manajemen Produk Toko Online</title>
+</head>
+
+<body>
+
+    <h2>Daftar Produk</h2>
+    <ul id="daftarProduk"></ul>
+
+    <script>
+        let produkList = [
+            { id: 1, nama: "Laptop", harga: 12000000 },
+            { id: 2, nama: "Smartphone", harga: 5000000 },
+            { id: 3, nama: "Tablet", harga: 7000000 },
+            { id: 4, nama: "Monitor", harga: 2000000 },
+            { id: 5, nama: "TWS", harga: 1000000 }
+        ];
+
+        const eventHandler = {
+            tambahProduk: function(id, nama, harga) {
+                tambahProduk(id, nama, harga);
+            },
+            hapusProduk: function(id) {
+                hapusProduk(id);
+            },
+            tampilkanProduk: function() {
+                tampilkanProduk();
+            }
+        };
+
+        function tambahProduk(id, nama, harga) {
+            let idSudahAda = false;
+
+            for (let i = 0; i < produkList.length; i++) {
+                if (produkList[i].id === id) {
+                    idSudahAda = true;
+                    break;
+                }
+            }
+
+            if (idSudahAda === true) {
+                console.log("Produk dengan ID " + id + " sudah ada.");
+            } else {
+                produkList = produkList.concat([{ id: id, nama: nama, harga: harga }]);
+                console.log("Produk " + nama + " berhasil ditambahkan.");
+            }
+
+            tampilkanProduk();
+        }
+
+        function hapusProduk(id) {
+            let produkDitemukan = false;
+            let produkBaru = [];
+
+            for (let i = 0; i < produkList.length; i++) {
+                if (produkList[i].id === id) {
+                    produkDitemukan = true;
+                } else {
+                    produkBaru.push(produkList[i]);
+                }
+            }
+
+            if (produkDitemukan === true) {
+                produkList = produkBaru;
+                console.log("Produk dengan ID " + id + " berhasil dihapus.");
+            } else {
+                console.log("Produk dengan ID " + id + " tidak ditemukan.");
+            }
+            tampilkanProduk();
+        }
+
+        function tampilkanProduk() {
+            let daftarProduk = document.getElementById("daftarProduk");
+            daftarProduk.innerHTML = "";
+
+            for (let i = 0; i < produkList.length; i++) {
+                let produk = produkList[i];
+
+                let id = produk.id;
+                let nama = produk.nama;
+                let harga = produk.harga;
+                let item = document.createElement("li");
+                item.textContent = "ID: " + id + ", Nama: " + nama + ", Harga: Rp " + harga.toLocaleString();
+                daftarProduk.appendChild(item);
+            }
+        }
+
+        eventHandler.tampilkanProduk();
+        eventHandler.tambahProduk(6, "Mouse", 200000);
+        eventHandler.tambahProduk(7, "Keyboard", 750000);
+        eventHandler.hapusProduk(2);
+        eventHandler.tampilkanProduk();
+
+    </script>
+
+</body>
+
+</html>
