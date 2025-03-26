@@ -1,4 +1,4 @@
-import users from './data.js' 
+import users from './data.mjs' 
 const index = () => { 
     console.log("Daftar user:") 
     users.forEach(({ nama, umur, alamat, email }) => { 
